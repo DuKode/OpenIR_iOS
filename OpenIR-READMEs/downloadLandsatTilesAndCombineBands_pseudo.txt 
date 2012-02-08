@@ -1,0 +1,128 @@
+# //pseudo code for downloading and processing landsat tile maps. 
+# author: ilias koen dukodestudio 
+
+###################################
+# //download band combinations // #
+###################################
+# _nn10 
+# _nn20 
+# _nn30 
+# _nn40 
+# _nn50 
+# _nn70 
+
+
+
+############################
+# // image magick tasks // #
+############################
+
+//Path/Row/filename//zone/RGB
+
+# //visible 
+# p013r032_7t20001020_z18_321.tif
+
+# // ex. convert  separate_red.png separate_green.gif separate_blue.gif -combine  rose_combined.gif
+# // ex. convert p013r031_7t20020908_z18_nn30.tif p013r031_7t20020908_z18_nn20.tif p013r031_7t20020908_z18_nn10.tif  -combine 327.tif 
+
+# // color correction 
+# // possible option see images located in the openIR_readme directory. 
+# convert 327.tif  -normalize 327_normalize.tif
+# convert 327.tif  -channel R -normalize -channel G -normalize -channel B -normalize 327channel_normalize.tif 
+# convert 327.tif -channel R -auto-level -channel G -auto-level -channel B -auto-level 327level.tif 
+# convert 327.tif -channel R  -contrast-stretch 0.15x0.05%  -channel G  -contrast-stretch 0.15x0.05%  -channel B  -contrast-stretch 0.15x0.05%  327channel_contrast-stretch0.15x0.05%.tif 
+
+# // add mask to establish transparency for the landsat tile. 
+
+
+# composite band combinations 
+# assign georeference information to band combination composite 
+
+# //false color 
+# 432
+# p013r032_7t20001020_z18_432.tif
+# composite band combination 
+# assign georeference information to band combination composite
+
+# 451
+# composite band combination 
+# assign georeference information to band combination composite 
+
+# 453 
+# composite band combination 
+
+# 531
+# composite band combinations 
+
+# 541
+# composite band combinations 
+
+# 543
+# composite band combinations 
+
+# 741
+# composite band combinations 
+
+# 742
+# composite band combinations 
+
+# 753
+# composite band combinations 
+
+# 754
+# composite band combinations 
+
+
+
+##########################################
+# // apply georeference to composites // #
+##########################################
+# step 1
+# // copy geographic information from geotiff to tif. // #  
+# // export geotiff information to text file. 
+# listgeo p012r031_7t20000927_z19_nn10.tif > p012r031_7t20000927_z19_georeference.txt 
+
+#step 2 assign geographic information to band combinations 
+# 321 true color  
+# //import text file with geographic information to landsat composites. 
+# geotifcp -g p012r031_7t20000927_z19_georeference.txt  p013r032_7t20001020_z18_321.tif p013r032_7t20001020_z18_321_geo.tif
+
+# 432 false color 
+# assign georeference information to band combination composite
+
+# 451
+# assign georeference information to band combination composite 
+
+# 453 
+# assign georeference information to band combination composite
+
+# 531
+# assign georeference information to band combination composite
+
+# 541
+# assign georeference information to band combination composite
+
+# 543
+# assign georeference information to band combination composite
+
+# 741
+# assign georeference information to band combination composite
+
+# 742
+# assign georeference information to band combination composite
+
+# 753
+# assign georeference information to band combination composite
+
+# 754
+# assign georeference information to band combination composites
+
+
+##########################################
+# // create vrt's for columns // # 
+##########################################
+
+##########################################
+# // export tiles for columns // #
+##########################################
+
