@@ -60,11 +60,13 @@
         NSLog(@"TOUCH BEGAN IN VIEWCONTROLLER\n");
         [map removeOverlays:map.overlays];
         if (currentview == 432) {
-            [map addOverlay:overlay_321];
+            [map addOverlay:overlay_NY_321];
+            [map addOverlay:overlay_Boston_321];
             currentview = 321;
         }
         else {
-            [map addOverlay:overlay_432];
+            [map addOverlay:overlay_NY_432];
+            [map addOverlay:overlay_Boston_432];
             currentview = 432;
         }
     };
@@ -73,12 +75,22 @@
     // Initialize the TileOverlay with tiles in the application's bundle's resource directory.
     // Any valid tiled image directory structure in there will do.
     NSString *tileDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Tiles"];
-    overlay_321 = [[TileOverlay alloc] initWithTileDirectory:tileDirectory];
+    overlay_NY_321 = [[TileOverlay alloc] initWithTileDirectory:tileDirectory];
     
-    //arlduc: add a second band combination
-    NSString *tileDirectory2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Tiles_432"];
-    overlay_432 = [[TileOverlay alloc] initWithTileDirectory:tileDirectory2];
-    [map addOverlay:overlay_432];
+    //arlduc: add Boston
+    NSString *tileDirectory2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Tiles_Boston_321"];
+    overlay_Boston_321 = [[TileOverlay alloc] initWithTileDirectory:tileDirectory2];
+    
+    //arlduc: add 432 for NY
+    NSString *tileDirectory3 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Tiles_432"];
+    overlay_NY_432 = [[TileOverlay alloc] initWithTileDirectory:tileDirectory3];
+    
+    //arlduc: add 432 for Boston
+    NSString *tileDirectory4 = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Tiles_Boston_432"];
+    overlay_Boston_432 = [[TileOverlay alloc] initWithTileDirectory:tileDirectory4];
+    
+    [map addOverlay:overlay_NY_432];
+    [map addOverlay:overlay_Boston_432];
     currentview = 432;
     NSLog(@"ADDED 432\n");
 
@@ -88,7 +100,7 @@
     // because MapKit always backs up to get to an integral zoom level so
     // we need to go in one so that we don't end up backed out beyond the
     // range of the TileOverlay.
-    MKMapRect visibleRect = [map mapRectThatFits:overlay_321.boundingMapRect];
+    MKMapRect visibleRect = [map mapRectThatFits:overlay_NY_432.boundingMapRect];
     visibleRect.size.width /= 2;
     visibleRect.size.height /= 2;
     visibleRect.origin.x += visibleRect.size.width / 2;
@@ -111,9 +123,8 @@
 
 
 #pragma mark === Touch handling  ===
-#pragma mark
 
-
+/*
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //[tapInterceptor touchesBeganCallback];
@@ -121,11 +132,11 @@
     NSLog(@"TOUCH BEGAN IN VIEWCONTROLLER\n");
     [map removeOverlays:map.overlays];
     if (currentview == 432) {
-        [map addOverlay:overlay_321];
+        [map addOverlay:overlay_NY_432];
         currentview = 321;
     }
     else {
-        [map addOverlay:overlay_432];
+        [map addOverlay:overlay_NY_432];
         currentview = 432;
     }
     
@@ -134,16 +145,16 @@
 
 
 // Handles the start of a touch
-/*-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"TOUCH BEGAN\n");
     [map removeOverlays:map.overlays];
     if (currentview == 432) {
-        [map addOverlay:overlay_321];
+        [map addOverlay:overlay_NY_432];
         currentview = 321;
     }
     else {
-        [map addOverlay:overlay_432];
+        [map addOverlay:overlay_NY_432];
         currentview = 432;
     }
 }
@@ -156,8 +167,10 @@
  
 - (void)dealloc
 {
-    [overlay_321 release]; 
-    [overlay_432 release]; 
+    [overlay_NY_321 release]; 
+    [overlay_NY_432 release]; 
+    [overlay_Boston_321 release]; 
+    [overlay_Boston_432 release];
     [tapInterceptor release];
 }
 

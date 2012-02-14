@@ -53,7 +53,7 @@
 @interface TileMapViewController : UIViewController <MKMapViewDelegate> {
     IBOutlet MKMapView *map;
     WildcardGestureRecognizer * tapInterceptor;
-    TileOverlay *overlay_321, *overlay_432;
+    TileOverlay *overlay_NY_321, *overlay_NY_432, *overlay_Boston_321, *overlay_Boston_432;
     int currentview;
 }
 

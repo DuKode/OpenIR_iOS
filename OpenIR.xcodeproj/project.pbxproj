@@ -1521,6 +1521,8 @@
 		CA6CA29714D37AAE00BD439F /* Tiles_432 in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA29614D37AAE00BD439F /* Tiles_432 */; };
 		CA6CA29E14D38FB200BD439F /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA29C14D38FB200BD439F /* WildcardGestureRecognizer.m */; };
 		CA75E55914D4AFBF005641A8 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA75E55814D4AFBF005641A8 /* MainWindow-iPad.xib */; };
+		CAAF8C7D14E9EA110025A1DB /* Tiles_Boston_321 in Resources */ = {isa = PBXBuildFile; fileRef = CAAF8C7C14E9EA110025A1DB /* Tiles_Boston_321 */; };
+		CAAF8C8014E9EA220025A1DB /* Tiles_Boston_432 in Resources */ = {isa = PBXBuildFile; fileRef = CAAF8C7F14E9EA220025A1DB /* Tiles_Boston_432 */; };
 		D27B800B14CA23E400E83F62 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2D138C1194D74500A685B7 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -3048,6 +3050,8 @@
 		CA6CA29C14D38FB200BD439F /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		CA6CA29D14D38FB200BD439F /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
 		CA75E55814D4AFBF005641A8 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		CAAF8C7C14E9EA110025A1DB /* Tiles_Boston_321 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tiles_Boston_321; sourceTree = "<group>"; };
+		CAAF8C7F14E9EA220025A1DB /* Tiles_Boston_432 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tiles_Boston_432; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3117,6 +3121,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CAAF8C7F14E9EA220025A1DB /* Tiles_Boston_432 */,
+				CAAF8C7C14E9EA110025A1DB /* Tiles_Boston_321 */,
 				CA6CA29614D37AAE00BD439F /* Tiles_432 */,
 				CA6C8A8614D3741000BD439F /* Tiles */,
 				2899E5210DE3E06400AC0155 /* TileMapViewController.xib */,
@@ -6854,6 +6860,8 @@
 				CA6C968D14D3741300BD439F /* tilemapresource.xml in Resources */,
 				CA6CA29714D37AAE00BD439F /* Tiles_432 in Resources */,
 				CA75E55914D4AFBF005641A8 /* MainWindow-iPad.xib in Resources */,
+				CAAF8C7D14E9EA110025A1DB /* Tiles_Boston_321 in Resources */,
+				CAAF8C8014E9EA220025A1DB /* Tiles_Boston_432 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
